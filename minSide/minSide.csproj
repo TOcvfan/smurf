@@ -103,9 +103,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\PhotoComment.cs" />
     <Compile Include="Models\ISmurfContext.cs" />
     <Compile Include="Models\Photo.cs" />
+    <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\SmurfContext.cs" />
     <Compile Include="Models\SmurfInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

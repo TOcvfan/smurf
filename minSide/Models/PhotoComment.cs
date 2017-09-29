@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 
 namespace minSide.Models {
-    public class Comment {
+    public class PhotoComment {
         //CommentID. This is the Primary Key
         public int CommentID { get; set; }
 

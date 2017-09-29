@@ -7,12 +7,12 @@ using System.Web;
 namespace minSide.Models {
     public class SmurfContext : DbContext, ISmurfContext {
         public DbSet<Photo> Photos { get; set; }
-        public DbSet<Comment> Comments { get; set; }
+        public DbSet<PhotoComment> Comments { get; set; }
 
         IQueryable<Photo> ISmurfContext.Photos {
             get { return Photos; }
         }
-        IQueryable<Comment> ISmurfContext.Comments {
+        IQueryable<PhotoComment> ISmurfContext.Comments {
             get { return Comments; }
         }
         public T Add<T>(T entity) where T : class {
@@ -23,7 +23,7 @@ namespace minSide.Models {
             throw new NotImplementedException();
         }
 
-        public Comment FindCommentById(int ID) {
+        public PhotoComment FindCommentById(int ID) {
             throw new NotImplementedException();
         }
 

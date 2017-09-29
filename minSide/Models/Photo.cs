@@ -38,7 +38,7 @@ namespace minSide.Models {
         public string UserName { get; set; }
 
         //All the comments on this photo, as a navigation property
-        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<PhotoComment> Comments { get; set; }
 
     }
 }
