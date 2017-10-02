@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 namespace minSide.Models {
     interface ISmurfContext {
         IQueryable<Photo> Photos { get; }
-        IQueryable<PhotoComment> Comments { get; }
+        IQueryable<PhotoComment> PhotoComments { get; }
+        IQueryable<PageComment> PageComments { get; }
         int SaveChanges();
         T Add<T>(T entity) where T : class;
-        Photo FindPhotoById(int ID);
-        Photo FindPhotoByTitle(string Title);
-        PhotoComment FindCommentById(int ID);
         T Delete<T>(T entity) where T : class;
     }
 }

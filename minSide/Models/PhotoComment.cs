@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -7,7 +8,7 @@ using System.Web;
 namespace minSide.Models {
     public class PhotoComment {
         //CommentID. This is the Primary Key
-        public int CommentID { get; set; }
+        public int PhotoCommentID { get; set; }
 
         //PhotoID. This is the ID of the photo that this comment relates to
         public int PhotoID { get; set; }
@@ -26,5 +27,10 @@ namespace minSide.Models {
 
         //Photo. This is the photo that this comment relates to as a navigation property
         public virtual Photo Photo { get; set; }
+
+        [DataType(DataType.DateTime)]
+        [DisplayName("Created Date")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yy}", ApplyFormatInEditMode = true)]
+        public DateTime CreatedDate { get; set; }
     }
 }
