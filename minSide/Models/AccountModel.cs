@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+
 using System.Linq;
 using System.Web;
 
@@ -12,7 +14,7 @@ namespace minSide.Models {
         }
 
     }
-    public class LoginModel {
+    public class LoginModel  {
         //UserName
         [Required]
         [Display(Name = "User name")]
@@ -29,35 +31,18 @@ namespace minSide.Models {
     }
 
     //A  model for registering
+    [Table("UserProfile")]
     public class RegisterModel {
+
+        public int UserId { get; set; }
         //UserName
         [Required]
         [Display(Name = "User name")]
         public string UserName { get; set; }
-
-        [Required]
-        [Display(Name = "First name")]
-        public string FName { get; set; }
-
-        [Required]
-        [Display(Name = "Last name")]
-        public string LName { get; set; }
-
-        [Required]
-        [Display(Name = "e-mail")]
-        [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
-
-        [Required]
-        [Display(Name = "What are you to me")]
-        public string Role { get; set; }
-
-        [Display(Name = "Phone number")]
-        public string Phone { get; set; }
-
+        
         //Password
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {8} characters long.", MinimumLength = 8)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -69,16 +54,11 @@ namespace minSide.Models {
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [Display(Name = "Status")]
-        public string Status { get; set; }
-
-        [Required]
-        [Display(Name = "Gender")]
-        public string Gender { get; set; }
-
-        [Required]
-        [Display(Name = "Your Age")]
-        public int Age { get; set; }
+        [Display(Name = "e-mail")]
+        [RegularExpression("^[a-z0-9_\\+-]+(\\.[a-z0-9_\\+-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*\\.([a-z]{2,4})$", ErrorMessage = "Email does not appear to be valid format.")]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+        
     }
 
     //This model is for resetting the password
@@ -89,7 +69,7 @@ namespace minSide.Models {
         public string OldPassword { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {8} characters long.", MinimumLength = 8)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "New password")]
         public string NewPassword { get; set; }

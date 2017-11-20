@@ -5,13 +5,18 @@ using System.Linq;
 using System.Web;
 
 namespace minSide.Models {
-    public class SmurfContext : DbContext, ISmurfContext {
+    public class SmurfContext : DbContext, ISmurfContext, ISmurfGuestBookContext, ISmurfUserContext {
         public DbSet<Photo> Photos { get; set; }
         public DbSet<PhotoComment> PhotoComments { get; set; }
-        public DbSet<PageComment> PageComments { get; set; }
+        public DbSet<GuestBook> GuestBookNotes { get; set; }
+        public DbSet<User> UserInfo { get; set; }
 
-        IQueryable<PageComment> ISmurfContext.PageComments {
-            get { return PageComments; }
+        IQueryable<User> ISmurfUserContext.UserInfo {
+            get { return UserInfo; }
+        }
+
+        IQueryable<GuestBook> ISmurfGuestBookContext.GuestBookNotes {
+            get { return GuestBookNotes; }
         }
 
         IQueryable<Photo> ISmurfContext.Photos {
@@ -21,15 +26,17 @@ namespace minSide.Models {
         IQueryable<PhotoComment> ISmurfContext.PhotoComments {
             get { return PhotoComments; }
         }
-
+        
         public T Add<T>(T entity) where T : class {
-            throw new NotImplementedException();
+            return Set<T>().Add(entity);
         }
 
         public T Delete<T>(T entity) where T : class {
-            throw new NotImplementedException();
+            return Set<T>().Remove(entity);
         }
 
-        
+        public Photo FindPhotoById(int ID) {
+            return Set<Photo>().Find(ID);
+        }
     }
 }

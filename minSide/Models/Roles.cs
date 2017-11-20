@@ -9,7 +9,7 @@ namespace minSide.Models {
         public const string User = "User";
         public const string Job = "Job";
         public const string Lover = "Kaerste";
-        public const string Familiy = "Familie";
+        public const string Family = "Familie";
         public const string Friend = "Ven";
     }
 }
