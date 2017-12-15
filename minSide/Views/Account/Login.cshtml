@@ -1,0 +1,46 @@
+﻿@model minSide.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"> </div>
+            <div class="col-md-6">
+                <div class="card text-white p-5 bg-secondary">
+                    <div class="card-body">
+                        <h1 class="mb-4">@ViewBag.Title</h1>
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "Log in was unsuccessful. Please correct the errors and try again.")
+                        <form>
+                            <div class="form-group">
+                                
+                                    <span class="editor-label">
+                                        @Html.LabelFor(m => m.UserName)
+                                    </span><br/>
+
+                                <span class="editor-field">
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "text-box" })
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <span class="editor-label">
+                                    @Html.LabelFor(m => m.Password)
+                                </span><br />
+                                <span class="editor-field">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "text-box" })
+                                </span>
+                            </div>
+                            <button type="submit" class="btn btn-info">Login</button>
+                        </form>
+}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

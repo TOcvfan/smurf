@@ -13,7 +13,7 @@ namespace minSide.Controllers
         private ISmurfUserContext context;
 
         public UserController() {
-            context = new SmurfContext();
+            context = new SmurfContextBil();
         }
         // GET: User
         public ActionResult Index()
@@ -25,18 +25,23 @@ namespace minSide.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddInfo(User userinfo, FormCollection form) {
-            if (!form["FormEntryBotWatch"].Equals("CMH-IS-COOL")) {
-                ModelState.AddModelError("", "The controller thinks you are a bot, please wait for message to say it is safe to submit entry (30 Seconds)");
-            } else {
-                if (ModelState.IsValid) {
+            
+            if (ModelState.IsValid) {
 
-                    context.Add(userinfo);
-                    context.SaveChanges();
-                    return RedirectToAction("Index", "Home");
-                }
+                //context.Add(User.Identity.Name);
+                context.Add(userinfo);
+                context.SaveChanges();
+                return RedirectToAction("Index", "Home");
             }
-            return View();
+            else {
+                return View();
+            }
+            
+            
         }
     }
 }

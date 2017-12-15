@@ -7,49 +7,55 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">
     <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/index2.css" rel="stylesheet" />
+   
 </head>
-<body>
+<body class="bg-primary">
     <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="#">It-Smurf</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    @if (Request.IsAuthenticated) {
+                 
+                <ul class="navbar-nav mr-auto"> 
+@*@if (Request.IsAuthenticated)
+    {*@
                     <li class="nav-item">
-                        <a class="nav-link" href="#">CV</a>
+                        @Html.ActionLink("CV", "Index", "CV", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+
+                    <li class="nav-item">
+                        @Html.ActionLink("Min bil", "", "", new { area = "" }, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Application</a>
-                    </li>
-                    }
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">My Car</a>
+                        @Html.ActionLink("Min campinvogn", "", "", new { area = "" }, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">My Caravan</a>
+                        @Html.ActionLink("Gæstebog", "Index", "Guestbook", new { area = "" }, new { @class = "nav-link text-white" })
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Guestbook</a>
-                    </li>
+             
+                   
+                                        
                 </ul>
-                <h1 class="text-white">Hello&nbsp;@System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(User.Identity.Name).</h1>
-                @if (Request.IsAuthenticated) {
+                @if (Context.User.Identity.IsAuthenticated) {
+                <h1 class="text-white">Hej&nbsp;@System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(User.Identity.Name)&nbsp;</h1>
+                
                     <div> 
-                        <a class="btn btn-primary" href="">@Html.ActionLink("Log Off", "LogOff", "Account")</a>
+                        @Html.ActionLink("Log Off", "LogOff", "Account", new { area = "" }, new { @class = "btn btn-primary" })
                     </div>
-                } else {
+                  }else { 
                     <div>
-                        <a class="btn btn-primary" href="">@Html.ActionLink("Log In", "Login", "Account")</a>
-                        <a class="btn btn-danger" href="">@Html.ActionLink("Register", "Register", "Account")</a>
+                        @Html.ActionLink("Log In", "Login", "Account", new { area = "" }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Register", "Register", "Account", new { area = "" }, new { @class = "btn btn-danger" })
                     </div>
-                }
+                  }
             </div>
         </div>
     </nav>
     @RenderBody()
     <script src="~/Content/jquery/jquery.js"></script>
     <script src="~/Content/jquery-ui.js"></script>
+    <script src="~/Content/JavaScript.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
@@ -65,7 +71,7 @@
                         <a href="https://www.facebook.com/hammervig" target="_blank"><i class="fa fa-fw fa-facebook fa-3x text-white"></i></a>
                     </div>
                     <div class="col-4 col-md-1 align-self-center">
-                        <a href="www.linkedin.com/in/christian-munch-hammervig" target="_blank"><i class="fa fa-fw fa-3x text-white fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/christian-munch-hammervig" target="_blank"><i class="fa fa-fw fa-3x text-white fa-linkedin"></i></a>
                     </div>
                     <div class="col-4 col-md-1 align-self-center">
                         <script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
@@ -87,7 +93,7 @@
                         <a href="http://www.snapchat.com/add/tocvfan" target="_blank"><i class="fa fa-fw text-white fa-3x fa-snapchat-ghost"></i></a>
                     </div>
                     <div class="col-4 col-md-1 align-self-center">
-                        <a href="https://api.whatsapp.com/send?phone=+4541571079" target="_blank"><i class="fa fa-fw text-white fa-3x fa-whatsapp"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=4541571079" target="_blank"><i class="fa fa-fw text-white fa-3x fa-whatsapp"></i></a>
                     </div>
                     <div class="col-4 col-md-1 align-self-center">
                         <a href="mailto:christian@hammervig.dk" target="_blank"><i class="fa fa-fw text-white fa-3x fa-envelope-o"></i></a>

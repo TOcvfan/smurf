@@ -34,6 +34,7 @@ namespace minSide.Models {
     [Table("UserProfile")]
     public class RegisterModel {
 
+        [Key]
         public int UserId { get; set; }
         //UserName
         [Required]

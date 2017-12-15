@@ -13,7 +13,11 @@
                     <div class="card text-white p-5 bg-secondary">
                         <div class="card-body">
                             <h1 class="mb-4">Create User</h1>
-                            <form action="https://formspree.io/YOUREMAILHERE">
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+                            <form action="https://formspree.io/christian@hammervig.dk">
                                 <div class="form-group">
                                     <label class="form-control-label">First name</label>
                                     @Html.TextBoxFor(m => m.FName, new { @class = "text-box" })
@@ -22,17 +26,7 @@
                                     <label>Last name</label>
                                     @Html.TextBoxFor(m => m.LName, new { @class = "text-box" })
                                 </div>
-                                <div class="btn-group">
-                                    
-                                        <select id="selectmenu">
-                                            <option value="User">User</option>
-                                            <option value="kaereste">Lover</option>
-                                            <option value="Job" selected="selected">Job</option>
-                                            <option value="Familie">Family</option>
-                                            <option value="Ven">Friend</option>
-                                        </select>
-                                    
-                                </div>
+                                
                                 <div class="form-group">
                                     <label>Phone</label>
                                     @Html.TextBoxFor(m => m.Phone, new { @class = "text-box" })
@@ -43,6 +37,7 @@
                                 </div>
                                 <button type="submit" class="btn btn-success">Next</button>
                             </form>
+}
                         </div>
                     </div>
                 </div>

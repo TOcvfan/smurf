@@ -5,9 +5,9 @@ using System.Linq;
 using System.Web;
 
 namespace minSide.Models {
-    public class SmurfContext : DbContext, ISmurfContext, ISmurfGuestBookContext, ISmurfUserContext {
+    public class SmurfContextBil : DbContext, ISmurfContextBil, ISmurfGuestBookContext, ISmurfUserContext {
         public DbSet<Photo> Photos { get; set; }
-        public DbSet<PhotoComment> PhotoComments { get; set; }
+        public DbSet<PhotoCommentBil> PhotoCommentsBil { get; set; }
         public DbSet<GuestBook> GuestBookNotes { get; set; }
         public DbSet<User> UserInfo { get; set; }
 
@@ -19,12 +19,12 @@ namespace minSide.Models {
             get { return GuestBookNotes; }
         }
 
-        IQueryable<Photo> ISmurfContext.Photos {
+        IQueryable<Photo> ISmurfContextBil.Photos {
             get { return Photos; }
         }
 
-        IQueryable<PhotoComment> ISmurfContext.PhotoComments {
-            get { return PhotoComments; }
+        IQueryable<PhotoCommentBil> ISmurfContextBil.PhotoCommentsBil {
+            get { return PhotoCommentsBil; }
         }
         
         public T Add<T>(T entity) where T : class {

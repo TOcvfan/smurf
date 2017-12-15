@@ -14,11 +14,7 @@ namespace minSide.Models {
         [ForeignKey("UserId")]
         public virtual RegisterModel Model { get; set; }
 
-        [Required]
-        [Display(Name = "e-mail")]
-        [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
-
+        
         [Required]
         [Display(Name = "First name")]
         public string FName { get; set; }

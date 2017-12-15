@@ -6,9 +6,9 @@ using System.Linq;
 using System.Web;
 
 namespace minSide.Models {
-    public class PhotoComment {
+    public class PhotoCommentBil {
         //CommentID. This is the Primary Key
-        public int PhotoCommentID { get; set; }
+        public int PhotoCommentBilID { get; set; }
 
         //PhotoID. This is the ID of the photo that this comment relates to
         public int PhotoID { get; set; }

@@ -9,11 +9,11 @@ namespace minSide.Controllers
 {
     public class PhotoController : Controller
     {
-        private ISmurfContext context;
+        private ISmurfContextBil context;
 
         //Constructors
         public PhotoController() {
-            context = new SmurfContext();
+            context = new SmurfContextBil();
         }
 
         /*public PhotoController(ISmurfContext Context) {
@@ -41,14 +41,14 @@ namespace minSide.Controllers
             return PartialView("_PhotoGallery", photos);
         }
 
-        [Authorize(Roles = Roles.Administrator)]
+        [Authorize]
         public ActionResult Create() {
             Photo newPhoto = new Photo();
             newPhoto.CreatedDate = DateTime.Today;
             return View("Create", newPhoto);
         }
 
-        [Authorize(Roles = Roles.Administrator)]
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Photo photo, HttpPostedFileBase image) {
             photo.CreatedDate = DateTime.Today;
