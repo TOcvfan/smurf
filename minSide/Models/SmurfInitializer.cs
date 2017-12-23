@@ -6,9 +6,9 @@ using System.Linq;
 using System.Web;
 
 namespace minSide.Models {
-    public class SmurfInitializer : DropCreateDatabaseAlways<SmurfContextBil> {
+    public class SmurfInitializer : DropCreateDatabaseAlways<SmurfContext> {
 
-        protected override void Seed(SmurfContextBil context) {
+        protected override void Seed(SmurfContext context) {
             base.Seed(context);
         }
 

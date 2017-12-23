@@ -7,18 +7,19 @@ using minSide.Models;
 
 namespace minSide.Controllers
 {
-    public class PhotoController : Controller
+    public class PhotoCaravanController : Controller
     {
-        private ISmurfContextBil context;
+        private ISmurfContextPhoto context;
 
         //Constructors
-        public PhotoController() {
-            context = new SmurfContextBil();
+        public PhotoCaravanController()
+        {
+            context = new SmurfContext();
         }
 
-        /*public PhotoController(ISmurfContext Context) {
+        public PhotoCaravanController(ISmurfContextPhoto Context) {
             context = Context;
-        }*/
+        }
 
         // GET: Photo
         public ActionResult Index()
@@ -27,22 +28,27 @@ namespace minSide.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult _PhotoGallery(int number = 0) {
+        public ActionResult _PhotoGallery(int number = 0)
+        {
             List<Photo> photos;
 
-            if (number == 0) {
+            if (number == 0)
+            {
                 photos = context.Photos.ToList();
-            } else {
+            }
+            else
+            {
                 photos = (from p in context.Photos
                           orderby p.CreatedDate descending
                           select p).Take(number).ToList();
             }
 
-            return PartialView("_PhotoGallery", photos);
+            return PartialView("_PhotoGalleryCaravan", photos);
         }
 
         [Authorize]
-        public ActionResult Create() {
+        public ActionResult Create()
+        {
             Photo newPhoto = new Photo();
             newPhoto.CreatedDate = DateTime.Today;
             return View("Create", newPhoto);
@@ -50,12 +56,17 @@ namespace minSide.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult Create(Photo photo, HttpPostedFileBase image) {
+        public ActionResult Create(Photo photo, HttpPostedFileBase image)
+        {
             photo.CreatedDate = DateTime.Today;
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return View("Create", photo);
-            } else {
-                if (image != null) {
+            }
+            else
+            {
+                if (image != null)
+                {
                     photo.ImageMimeType = image.ContentType;
                     photo.PhotoFile = new byte[image.ContentLength];
                     image.InputStream.Read(photo.PhotoFile, 0, image.ContentLength);
@@ -66,16 +77,21 @@ namespace minSide.Controllers
             }
         }
 
-        public FileContentResult GetImage(int id) {
+        public FileContentResult GetImage(int id)
+        {
             Photo photo = context.FindPhotoById(id);
-            if (photo != null) {
+            if (photo != null)
+            {
                 return File(photo.PhotoFile, photo.ImageMimeType);
-            } else {
+            }
+            else
+            {
                 return null;
             }
         }
 
-        public ActionResult SlideShow() {
+        public ActionResult SlideShow()
+        {
             return View("SlideShow", context.Photos.ToList());
         }
     }

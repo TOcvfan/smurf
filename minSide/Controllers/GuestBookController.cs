@@ -13,7 +13,7 @@ namespace minSide.Controllers
         private ISmurfGuestBookContext context;
 
         public GuestBookController() {
-            context = new SmurfContextBil();
+            context = new SmurfContext();
         }
 
         //public ActionResult Index()

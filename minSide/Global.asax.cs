@@ -1,4 +1,5 @@
-﻿using minSide.Models;
+﻿using minSide.App_Start;
+using minSide.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -13,8 +14,8 @@ namespace minSide
     {
         protected void Application_Start()
         {
-            //Database.SetInitializer<SmurfContext>(new SmurfInitializer());
-            //FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            Database.SetInitializer<SmurfContext>(new SmurfInitializer());
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }

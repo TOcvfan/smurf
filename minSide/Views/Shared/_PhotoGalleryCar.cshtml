@@ -1,0 +1,59 @@
+﻿@model IEnumerable<minSide.Models.Photo>
+
+<div class="py-5 gradient-overlay text-center bg-secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-light">Article header</h1>
+                        <p class="text-light">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+                            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@foreach (var item in Model)
+{
+
+    <div class="py-5 text-center bg-primary col-6 p-1">
+        <h3>"@item.Title"</h3>
+
+        @if (item.PhotoFile != null)
+        {
+            <a href='@Url.Action("DisplayCar", new { id = item.PhotoID })'><img class="d-block img-fluid" src="@Url.Action("GetImage", "Photo", new { id = item.PhotoID })" /></a>
+        }
+
+        <div class="photo-metadata">
+
+            <div>
+                <span class="display-label">
+                    Created By:
+                </span>
+                <span class="display-field">
+                    @Html.DisplayFor(model => item.UserName)
+                </span>
+            </div>
+
+            <div>
+                <span class="display-label">
+                    Created On:
+                </span>
+                <span class="display-field">
+                    @Html.DisplayFor(model => item.CreatedDate)
+                </span>
+            </div>
+
+        </div>
+
+        @Html.ActionLink("Display", "DisplayCar", new { id = item.PhotoID })
+
+    </div>
+
+
+}

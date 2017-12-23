@@ -11,7 +11,7 @@ namespace minSide.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private SmurfContextBil sm = new SmurfContextBil();
+        private SmurfContext sm = new SmurfContext();
         // GET: Account
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)

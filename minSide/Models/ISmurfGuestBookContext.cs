@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace minSide.Models {
-    interface ISmurfGuestBookContext {
+    public interface ISmurfGuestBookContext {
         IQueryable<GuestBook> GuestBookNotes { get; }
         int SaveChanges();
         T Add<T>(T entity) where T : class;

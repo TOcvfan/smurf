@@ -13,7 +13,12 @@ namespace minSide.Controllers
         private ISmurfUserContext context;
 
         public UserController() {
-            context = new SmurfContextBil();
+            context = new SmurfContext();
+        }
+
+        public UserController(ISmurfUserContext Context)
+        {
+            context = Context;
         }
         // GET: User
         public ActionResult Index()

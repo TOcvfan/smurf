@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace minSide.Models {
-    interface ISmurfContextBil {
+    public interface ISmurfContextPhoto {
         
         IQueryable<Photo> Photos { get; }
-        IQueryable<PhotoCommentBil> PhotoCommentsBil { get; }
+        IQueryable<PhotoComment> PhotoCommentsBil { get; }
         Photo FindPhotoById(int ID);
         int SaveChanges();
         T Add<T>(T entity) where T : class;
